@@ -17,12 +17,13 @@ public class Tarea5 {
     public static void main(String[] args) {
         // TODO code application logic here
         
-        Boolean verboso=false;
+        Boolean verboso=true;
         Boolean manual=false;
-        int cantnodos=5;
+        int cantnodos=4;
         double densidad=0.5;
         int numrepeticiones=0;
-        int inicio=0;
+        int nodoInicio=3;
+        
 //        for (int i = 0; i < args.length; i++) {
 //            System.out.println(args[i]);
 //        }
@@ -47,7 +48,7 @@ public class Tarea5 {
         System.out.println("Cantidad de nodos: "+cantnodos);
         System.out.println("densidad: "+densidad);
         System.out.println("numero de repeticiones: "+numrepeticiones);
-        System.out.println("Nodo inicio: "+inicio);
+        System.out.println("Nodo inicio: "+nodoInicio);
         Operaciones operaciones = new Operaciones();
         
         
@@ -55,13 +56,16 @@ public class Tarea5 {
         if(manual==true){
             System.out.println("Pedir nodos del grafo");
             //llamar 
-            operaciones.generarNodoManual();
+            operaciones.generarNodoManual(cantnodos, densidad, nodoInicio);
         }else{
-            operaciones.generarNodoAutomatico(cantnodos,densidad);
+            
+            operaciones.generarNodoAutomatico(cantnodos,densidad,nodoInicio,verboso);
            //generar los nodos, con los aristas y la densidad. 
         }
+        
         if (verboso==true) {
             System.out.println("Imprimir lista ,etc");
+            
             
         } else{
             

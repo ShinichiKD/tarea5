@@ -18,12 +18,18 @@ public class Operaciones {
     
     private double matriz[][];
     
+    boolean R[];
+        
+    double sp[];
+        
+    int from[];
+    
     public Operaciones(){
     
     }
     
     
-    public void generarNodoAutomatico(int n,double densidad){
+    public void generarNodoAutomatico(int n,double densidad, int nodoInicio,boolean verboso){
         
         for (int i = 0; i < n; i++) {
             
@@ -33,22 +39,19 @@ public class Operaciones {
             double x = Math.floor(xAux*1000)/1000;
             double y = Math.floor(yAux*1000)/1000;
             
-//            System.out.println("Nodo "+i);
-//            System.out.println(x+","+y);
-            
             Nodo punto  = new Nodo(x,y);
             listaNodos.add(punto);
         }
         
         generarAristas(n, densidad);
+        dijkstra(nodoInicio,verboso);
+        
         
     }
     
-    public void generarNodoManual(){
+    public void generarNodoManual(int n,double densidad, int nodoInicio){
         
         Scanner entrada = new Scanner(System.in);
-        System.out.print("Ingrese cantidad de Nodos: ");
-        int n = entrada.nextInt();
         
         for (int i = 0; i < n; i++) {
             System.out.println("Nodo "+i);
@@ -111,6 +114,7 @@ public class Operaciones {
         }
         
         imprimirMatriz();
+
         
     }
     
@@ -126,4 +130,145 @@ public class Operaciones {
         }
     }
     
+    public void dijkstra(int nodoInicio,boolean verboso){
+        
+        if (verboso) {
+            imprimirConecxiones();
+        }
+        
+        int n = matriz.length;
+        
+        R = new boolean[n];
+        
+        sp = new double[n];
+        
+        from = new int[n];
+        
+        //Inicializar arreglos
+        for (int i = 0; i < n; i++) {
+            R[i] = false;
+            sp[i] = 1000000;
+            from[i] = -1;
+            
+        }
+        
+        if (verboso) {
+            //imprimirVerboso(sp, R, from);
+        }
+        
+        
+        sp[nodoInicio] = 0;
+ 
+        adjecentes(nodoInicio);
+        int contTrue = 0;
+        
+        while(contTrue < n){
+            
+            int indiceMinimo = argMinimo(sp,R);
+            
+            
+            
+            for (int i = 0; i < 10; i++) {
+                
+                
+                
+                
+            }
+            
+            contTrue++;
+
+        }
+        
+        
+        for (int i = 0; i < n; i++) {
+            
+            if (sp[nodoInicio-1]+matriz[nodoInicio-1][i]< sp[i]) {
+                
+                
+            }
+            
+        }
+    
+    }
+    
+    public int[] adjecentes(int indice){
+        System.out.println("acyectens");
+        for (int i = 0; i < matriz.length; i++) {
+            
+            if (matriz[i][indice]!=1000000 && matriz[i][indice]!=0.0) {
+                System.out.println(i+" "+indice);
+            
+                System.out.println(matriz[i][indice]);
+            }
+            
+            
+            
+        }
+        return null;
+        
+    
+    }
+    
+    public int argMinimo(double sp[], boolean R[]){
+        
+        double minimo = 1000000;
+        
+        int indice = 0;
+        
+        for (int i = 0; i < sp.length; i++) {
+            if (sp[i]<minimo && R[i]==false) {
+                minimo = sp[i];
+                indice = i;
+            }
+            
+        }
+        sp[indice] = minimo;
+        R[indice] = true;
+        
+        return indice;
+    }
+    
+    
+    public void imprimirVerboso(double sp[], boolean R[], int from[]){
+            
+        int n = sp.length;
+        
+        System.out.print("sp: ");
+        for (int i = 0; i < n; i++) {
+            System.out.print(sp[i]+" ");
+  
+        }
+        System.out.println("");
+        
+        System.out.print("from: ");
+        for (int i = 0; i < n; i++) {
+            System.out.print(from[i]+" ");
+            
+        }
+        System.out.println("");
+    }
+    
+    
+    public void imprimirConecxiones(){
+    
+        System.out.println("GRAFO");
+        for (int i = 0; i < matriz.length-1; i++) {
+            
+            
+            for (int j = i+1; j < matriz.length; j++) {
+                
+                if (matriz[i][j]!=1000000) {
+                    Nodo nodo1 = listaNodos.get(i);
+                    Nodo nodo2 = listaNodos.get(j);
+                    
+                    System.out.print(nodo1.getX()+" "+nodo1.getY()+" ");
+                    System.out.print(nodo2.getX()+" "+nodo2.getY()+" ");
+                    System.out.println(matriz[i][j]);
+                    
+                }
+                
+            }
+        }
+        
+    }
 }
