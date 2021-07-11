@@ -20,7 +20,7 @@ public class Tarea5 {
         Boolean verboso=true;
         Boolean manual=false;
         int cantnodos=4;
-        double densidad=0.5;
+        double densidad=0.3;
         int numrepeticiones=0;
         int nodoInicio=3;
         
