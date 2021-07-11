@@ -23,11 +23,7 @@ public class Tarea5 {
         double densidad;
         int numrepeticiones;
         int nodoInicio;
-        
-        for (int i = 0; i < args.length; i++) {
-            System.out.println(args[i]);
-        }
-        
+
         if (args[0].equals("[-v]")) {
             verboso=true;
             
@@ -40,24 +36,14 @@ public class Tarea5 {
         }else{
             manual=false;
         }
-    
+        
         cantnodos = Integer.parseInt(args[2]);
         densidad = Double.parseDouble(args[3]);
         numrepeticiones = Integer.parseInt(args[4]);
         nodoInicio = Integer.parseInt(args[5]);
 
-        System.out.println("Verboso: "+verboso);
-        System.out.println("manual: "+manual);
-        System.out.println("Cantidad de nodos: "+cantnodos);
-        System.out.println("densidad: "+densidad);
-        System.out.println("numero de repeticiones: "+numrepeticiones);
-        System.out.println("Nodo inicio: "+nodoInicio);
-        
-        
-
         if(manual==true){
-            System.out.println("Pedir nodos del grafo");
-            
+            System.out.println("Numero de Nodos a ingresar: "+cantnodos );
             for (int i = 0; i < numrepeticiones; i++) {
                 System.out.println("----Repeticion "+(i+1)+" ----");                
                 Operaciones operaciones = new Operaciones();

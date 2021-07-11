@@ -155,17 +155,19 @@ public class Operaciones {
                         if (matriz[i][indiceMinimo]!=1000000 && matriz[i][indiceMinimo]!=0.0){
 
                             if (sp[indiceMinimo]+matriz[i][indiceMinimo]<sp[i]) {
-
-                                sp[i]=sp[indiceMinimo]+matriz[i][indiceMinimo];
+                                
+                                double suma = Math.floor(sp[indiceMinimo]+matriz[i][indiceMinimo]*1000)/1000;
+                                sp[i]= suma ;
                                 from[i]=indiceMinimo+"";
                                 
                             }
                         }
                         if (matriz[indiceMinimo][i]!=1000000 && matriz[indiceMinimo][i]!=0.0){
                             
-                            if (sp[indiceMinimo]+matriz[indiceMinimo][i]<sp[i]) {
+                            if (sp[indiceMinimo]+matriz[indiceMinimo][i]<sp[i] ) {
                                 
-                                sp[i]=sp[i]+matriz[indiceMinimo][i];
+                                double suma = Math.floor(sp[indiceMinimo]+matriz[indiceMinimo][i]*1000)/1000;
+                                sp[i] = suma;
                                 from[i]=indiceMinimo+"";
                                 
                             }
