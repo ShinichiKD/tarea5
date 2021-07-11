@@ -7,7 +7,7 @@ package tarea5;
 
 /**
  *
- * @author ShinichiKD
+ * @author Rodrigo - Pablo
  */
 public class Nodo {
     private double x;
